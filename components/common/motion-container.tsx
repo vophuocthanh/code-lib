@@ -1,0 +1,137 @@
+'use client'
+
+import { motion } from 'framer-motion'
+import React from 'react'
+import { cn } from '@/core/lib/utils'
+
+// Container motion variants
+export const containerVariants = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.15,
+      delayChildren: 0.3
+    }
+  }
+}
+
+// Item motion variants
+export const itemVariants = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      type: 'spring',
+      stiffness: 70,
+      damping: 15
+    }
+  }
+}
+
+// Fade in animation
+export const fadeInVariants = (delay: number = 0) => ({
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: { duration: 0.5, delay }
+  }
+})
+
+// Slide in animation
+export const slideInVariants = (delay: number = 0, direction: 'up' | 'down' | 'left' | 'right' = 'up') => {
+  const directions = {
+    up: { y: 20, x: 0 },
+    down: { y: -20, x: 0 },
+    left: { x: 20, y: 0 },
+    right: { x: -20, y: 0 }
+  }
+
+  return {
+    hidden: { opacity: 0, ...directions[direction] },
+    visible: {
+      opacity: 1,
+      y: 0,
+      x: 0,
+      transition: { duration: 0.5, delay }
+    }
+  }
+}
+
+type MotionContainerProps = {
+  children: React.ReactNode
+  className?: string
+  animation?: 'stagger' | 'fade' | 'slide'
+  delay?: number
+  direction?: 'up' | 'down' | 'left' | 'right'
+  as?: 'div' | 'section' | 'article' | 'ul' | 'li'
+}
+
+export const MotionContainer = ({
+  children,
+  className,
+  animation = 'stagger',
+  delay = 0,
+  direction = 'up',
+  as = 'div'
+}: MotionContainerProps) => {
+  // Dynamic variants based on animation type
+  if (animation === 'fade') {
+    return (
+      <motion.div
+        initial={{ opacity: 0 }}
+        animate={{ opacity: 1 }}
+        transition={{ duration: 0.5, delay }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+
+  if (animation === 'slide') {
+    const directions = {
+      up: { y: 20, x: 0 },
+      down: { y: -20, x: 0 },
+      left: { x: 20, y: 0 },
+      right: { x: -20, y: 0 }
+    }
+
+    return (
+      <motion.div
+        initial={{ opacity: 0, ...directions[direction] }}
+        animate={{ opacity: 1, y: 0, x: 0 }}
+        transition={{ duration: 0.5, delay }}
+        className={className}
+      >
+        {children}
+      </motion.div>
+    )
+  }
+
+  // Default stagger animation
+  return (
+    <motion.div initial='hidden' animate='visible' variants={containerVariants} className={className}>
+      {children}
+    </motion.div>
+  )
+}
+
+type MotionItemProps = {
+  children: React.ReactNode
+  className?: string
+  delay?: number
+  duration?: number
+  as?: keyof typeof motion
+}
+
+export const MotionItem = ({ children, className, delay = 0, duration = 0.5, as = 'div' }: MotionItemProps) => {
+  const Component = motion[as] as any
+
+  return (
+    <Component variants={itemVariants} className={className}>
+      {children}
+    </Component>
+  )
+}
