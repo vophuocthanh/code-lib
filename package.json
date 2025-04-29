@@ -11,7 +11,8 @@
     "check:lint": "eslint . --fix --quiet",
     "check:prettier": "prettier --write --ignore-unknown \"**/*\" ",
     "check:all": "yarn check:prettier && yarn check:lint && yarn check:type",
-    "prepare": "husky install"
+    "prepare": "husky",
+    "lint:fix": "eslint . --fix --quiet"
   },
   "dependencies": {
     "@emotion/react": "^11.14.0",
@@ -53,9 +54,15 @@
     "@types/node": "^20",
     "@types/react": "^18",
     "@types/react-dom": "^18",
+    "@typescript-eslint/eslint-plugin": "^8.31.1",
+    "@typescript-eslint/parser": "^8.31.1",
     "eslint": "^8",
-    "eslint-config-prettier": "^9.0.0",
+    "eslint-config-prettier": "^10.1.2",
+    "eslint-plugin-import": "^2.31.0",
+    "eslint-plugin-jsx-a11y": "^6.10.2",
     "eslint-plugin-prettier": "^5.0.0",
+    "eslint-plugin-react": "^7.37.5",
+    "eslint-plugin-react-hooks": "^5.2.0",
     "eslint-plugin-tailwindcss": "^3.13.0",
     "husky": "^9.1.7",
     "lint-staged": "^15.5.0",

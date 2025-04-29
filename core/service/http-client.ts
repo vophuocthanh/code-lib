@@ -1,9 +1,11 @@
-import { authApi } from '@/core/service/auth.service'
-import { clearLS, getAccessTokenFromLS, setAccessTokenToLS } from '@/core/utils/storage'
-import { LoginResponse } from '@/model/interface/auth.interface'
-import axios, { AxiosError, HttpStatusCode } from 'axios'
+import type { AxiosError } from 'axios'
+import axios, { HttpStatusCode } from 'axios'
 import { isEqual } from 'lodash'
 import { redirect } from 'next/navigation'
+
+import { authApi } from '@/core/service/auth.service'
+import { clearLS, getAccessTokenFromLS, setAccessTokenToLS } from '@/core/utils/storage'
+import type { LoginResponse } from '@/model/interface/auth.interface'
 
 const ECONNABORTED = 'ECONNABORTED'
 

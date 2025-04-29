@@ -1,10 +1,11 @@
 import type { Metadata } from 'next'
 import localFont from 'next/font/local'
 import './globals.css'
+import type { ReactNode } from 'react'
 import { ToastContainer } from 'react-toastify'
-import { ReactNode } from 'react'
-import ProviderQuery from '@/core/utils/provider-query'
+
 import { ThemeProvider } from '@/components/theme-provider'
+import ProviderQuery from '@/core/utils/provider-query'
 import 'react-toastify/dist/ReactToastify.css'
 
 const geistSans = localFont({
@@ -29,9 +30,15 @@ export default function RootLayout({
   children: ReactNode
 }>) {
   return (
-    <html lang='en' suppressHydrationWarning>
+    <html
+      suppressHydrationWarning
+      lang='en'
+    >
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
-        <ThemeProvider defaultTheme='system' storageKey='codelib-theme'>
+        <ThemeProvider
+          defaultTheme='system'
+          storageKey='codelib-theme'
+        >
           <ToastContainer className='text-xl' />
           <ProviderQuery>{children}</ProviderQuery>
         </ThemeProvider>

@@ -1,10 +1,11 @@
 'use client'
 
-import { ThemeToggle } from '@/components/theme-toggle'
-import { Button } from '@/components/ui/button'
 import { Github, Menu, X } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
+
+import { ThemeToggle } from '@/components/theme-toggle'
+import { Button } from '@/components/ui/button'
 
 const navItems = [
   { name: 'Features', href: '/features' },
@@ -31,7 +32,10 @@ export function Navbar() {
       <div className='container mx-auto'>
         <div className='flex h-16 w-full items-center justify-between'>
           <div className='flex items-center gap-3 sm:gap-6'>
-            <Link href='/' className='flex items-center space-x-2'>
+            <Link
+              className='flex items-center space-x-2'
+              href='/'
+            >
               <div className='flex items-center justify-center overflow-hidden'>
                 <div className='relative flex size-6 items-center justify-center rounded bg-primary font-bold text-primary-foreground'>
                   <span className='absolute text-[15px] font-bold'>C</span>
@@ -45,8 +49,8 @@ export function Navbar() {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  href={item.href}
                   className='text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
+                  href={item.href}
                 >
                   {item.name}
                 </Link>
@@ -57,16 +61,19 @@ export function Navbar() {
           <div className='flex items-center gap-2'>
             <div className='hidden items-center gap-2 md:flex'>
               <a
-                href='https://github.com/yourusername/codelib'
-                target='_blank'
-                rel='noopener noreferrer'
                 aria-label='GitHub repository'
                 className='inline-flex size-9 items-center justify-center rounded-full bg-transparent text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+                href='https://github.com/yourusername/codelib'
+                rel='noopener noreferrer'
+                target='_blank'
               >
                 <Github className='size-5' />
               </a>
               <ThemeToggle />
-              <Button size='sm' className='ml-2 px-3 sm:ml-4 sm:px-4'>
+              <Button
+                className='ml-2 px-3 sm:ml-4 sm:px-4'
+                size='sm'
+              >
                 Get Started
               </Button>
             </div>
@@ -74,11 +81,11 @@ export function Navbar() {
             <div className='flex items-center gap-2 md:hidden'>
               <ThemeToggle />
               <button
-                type='button'
+                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
                 className='inline-flex size-9 items-center justify-center rounded-full bg-transparent text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
+                type='button'
                 onClick={handleToggleMenu}
                 onKeyDown={handleKeyDown}
-                aria-label={isMenuOpen ? 'Close menu' : 'Open menu'}
               >
                 {isMenuOpen ? <X className='size-5' /> : <Menu className='size-5' />}
               </button>
@@ -94,8 +101,8 @@ export function Navbar() {
             {navItems.map((item) => (
               <Link
                 key={item.href}
-                href={item.href}
                 className='flex w-full rounded-md p-2 text-base font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground'
+                href={item.href}
                 onClick={() => setIsMenuOpen(false)}
               >
                 {item.name}
@@ -103,15 +110,19 @@ export function Navbar() {
             ))}
             <div className='mt-2 flex items-center justify-between border-t border-border/60 pt-4'>
               <a
-                href='https://github.com/yourusername/codelib'
-                target='_blank'
-                rel='noopener noreferrer'
                 className='flex items-center gap-1.5 rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground'
+                href='https://github.com/yourusername/codelib'
+                rel='noopener noreferrer'
+                target='_blank'
               >
                 <Github className='size-4' />
                 <span>GitHub</span>
               </a>
-              <Button size='sm' className='px-3' onClick={() => setIsMenuOpen(false)}>
+              <Button
+                className='px-3'
+                size='sm'
+                onClick={() => setIsMenuOpen(false)}
+              >
                 Get Started
               </Button>
             </div>

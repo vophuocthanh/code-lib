@@ -1,9 +1,9 @@
 'use client'
 
+import { Code, Database, Globe, Lock, Settings, Zap } from 'lucide-react'
+
 import { FeatureCard } from '@/components/common/feature-card'
 import { MotionContainer } from '@/components/common/motion-container'
-import { CheckCircle, Code, Database, Globe, Lock, Settings, Zap } from 'lucide-react'
-import React from 'react'
 
 export const features = [
   {
@@ -46,15 +46,18 @@ export const features = [
 
 export const FeatureList = () => {
   return (
-    <MotionContainer animation='stagger' className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3'>
+    <MotionContainer
+      animation='stagger'
+      className='grid gap-8 sm:grid-cols-2 lg:grid-cols-3'
+    >
       {features.map((feature, index) => (
         <FeatureCard
           key={feature.title}
-          title={feature.title}
+          color={feature.color}
           description={feature.description}
           icon={feature.icon}
-          color={feature.color}
           index={index}
+          title={feature.title}
         />
       ))}
     </MotionContainer>

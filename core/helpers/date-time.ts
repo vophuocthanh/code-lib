@@ -1,3 +1,9 @@
+import type { Dayjs } from 'dayjs'
+import dayjs from 'dayjs'
+import duration from 'dayjs/plugin/duration'
+import relativeTime from 'dayjs/plugin/relativeTime'
+import { isEmpty, isEqual, isUndefined } from 'lodash'
+
 import {
   STANDARD_DATE_FORMAT_INVERSE,
   STANDARD_TIME_FORMAT,
@@ -10,15 +16,14 @@ import {
   STANDARD_TIME_REGEX,
   numberConstants
 } from '@/core/helpers/consts'
-import dayjs, { Dayjs } from 'dayjs'
-import duration from 'dayjs/plugin/duration'
-import relativeTime from 'dayjs/plugin/relativeTime'
-import { isEmpty, isEqual, isUndefined } from 'lodash'
 
 dayjs.extend(relativeTime)
 dayjs.extend(duration)
 
-export function formatDate(date: Dayjs | string | Date, dateFormat: string = STANDARD_DATE_FORMAT_INVERSE) {
+export function formatDate(
+  date: Dayjs | string | Date,
+  dateFormat: string = STANDARD_DATE_FORMAT_INVERSE
+) {
   if (date) {
     if (typeof date === 'object' && 'format' in date) {
       return date.format(dateFormat)
@@ -37,7 +42,10 @@ export function formatTime(time: Dayjs, timeFormat: string = STANDARD_TIME_FORMA
   return dayjs(time).format(timeFormat)
 }
 
-export function formatDateTime(time: Dayjs, dateTimeFormat: string = STANDARD_DATE_TIME_FORMAT_VIEW) {
+export function formatDateTime(
+  time: Dayjs,
+  dateTimeFormat: string = STANDARD_DATE_TIME_FORMAT_VIEW
+) {
   if (!time) return null
   if (typeof time === 'object' && 'format' in time) {
     return time.format(dateTimeFormat)
@@ -49,7 +57,10 @@ export function formatDateTimeFromNow(time: Dayjs, lang: string) {
   return dayjs(time).locale(lang).fromNow()
 }
 
-export const formatDateToVietnamTimezone = (date?: Dayjs | string | undefined, format = STANDARD_DATE_FORMAT_FULL) => {
+export const formatDateToVietnamTimezone = (
+  date?: Dayjs | string | undefined,
+  format = STANDARD_DATE_FORMAT_FULL
+) => {
   if (isEmpty(date) || isUndefined(date)) {
     return null
   }
@@ -152,7 +163,9 @@ export const getDisabledTime = (selectedDate: Dayjs | null) => {
     return {
       disabledHours: () => Array.from({ length: currentHour }, (_, hourIndex) => hourIndex),
       disabledMinutes: (selectedHour: number) =>
-        isEqual(selectedHour, currentHour) ? Array.from({ length: currentMinute }, (_, minuteIndex) => minuteIndex) : []
+        isEqual(selectedHour, currentHour)
+          ? Array.from({ length: currentMinute }, (_, minuteIndex) => minuteIndex)
+          : []
     }
   }
   return {}

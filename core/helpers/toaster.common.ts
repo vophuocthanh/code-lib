@@ -1,7 +1,14 @@
-import { toast, ToastOptions } from 'react-toastify'
+import type { ToastOptions } from 'react-toastify'
+import { toast } from 'react-toastify'
 
 interface CustomToastOptions extends ToastOptions {
-  position?: 'top-right' | 'top-center' | 'top-left' | 'bottom-right' | 'bottom-center' | 'bottom-left'
+  position?:
+    | 'top-right'
+    | 'top-center'
+    | 'top-left'
+    | 'bottom-right'
+    | 'bottom-center'
+    | 'bottom-left'
   autoClose?: number | false
   hideProgressBar?: boolean
   closeOnClick?: boolean

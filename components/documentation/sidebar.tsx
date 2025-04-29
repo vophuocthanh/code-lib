@@ -1,8 +1,9 @@
 'use client'
 
-import { MotionContainer } from '@/components/common/motion-container'
-import { Book, Code, FileText } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Book, Code, FileText } from 'lucide-react'
+
+import { MotionContainer } from '@/components/common/motion-container'
 
 // Documentation categories
 export const docCategories = [
@@ -53,15 +54,22 @@ export const DocSidebar = () => {
 
   return (
     <motion.aside
-      initial={{ opacity: 0, x: -20 }}
       animate={{ opacity: 1, x: 0 }}
-      transition={{ duration: 0.5 }}
       className='shrink-0 lg:w-64'
+      initial={{ opacity: 0, x: -20 }}
+      transition={{ duration: 0.5 }}
     >
       <div className='sticky top-8'>
-        <MotionContainer animation='stagger' className='space-y-8'>
+        <MotionContainer
+          animation='stagger'
+          className='space-y-8'
+        >
           {docCategories.map((category, idx) => (
-            <motion.div key={idx} variants={itemVariants} className='space-y-2'>
+            <motion.div
+              key={idx}
+              className='space-y-2'
+              variants={itemVariants}
+            >
               <div className='flex items-center gap-2 font-medium text-foreground'>
                 {category.icon}
                 <span>{category.title}</span>
@@ -70,8 +78,8 @@ export const DocSidebar = () => {
                 {category.links.map((link, linkIdx) => (
                   <li key={linkIdx}>
                     <a
-                      href={link.href}
                       className='block py-1 text-sm text-muted-foreground transition-colors hover:text-foreground'
+                      href={link.href}
                     >
                       {link.title}
                     </a>

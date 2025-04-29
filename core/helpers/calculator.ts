@@ -1,5 +1,6 @@
-import { numberConstants, VND_CURRENCY_UNIT } from '@/core/helpers/consts'
 import { isEqual, isNil, multiply, sum } from 'lodash'
+
+import { numberConstants, VND_CURRENCY_UNIT } from '@/core/helpers/consts'
 
 export const toFixedNumber = (value: number, fractionDigits = numberConstants.TWO) => {
   if (isNil(value)) return undefined
@@ -24,5 +25,8 @@ export const dividedWithFixed = (a: number, b: number) => {
 }
 
 export const toFixedByCurrency = (value: number, currencyCode: string) => {
-  return toFixedNumber(value, isEqual(currencyCode, VND_CURRENCY_UNIT) ? numberConstants.ZERO : undefined)
+  return toFixedNumber(
+    value,
+    isEqual(currencyCode, VND_CURRENCY_UNIT) ? numberConstants.ZERO : undefined
+  )
 }

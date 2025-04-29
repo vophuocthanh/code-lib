@@ -1,7 +1,5 @@
 'use client'
 
-import * as React from 'react'
-import { cn } from '@/core/lib/utils'
 import {
   BookOpen,
   Code2,
@@ -15,12 +13,16 @@ import {
   TimerReset,
   Workflow
 } from 'lucide-react'
+import * as React from 'react'
+
+import { cn } from '@/core/lib/utils'
 
 const features = [
   {
     icon: <Code2 className='size-10' />,
     title: 'TypeScript First',
-    description: 'Built from the ground up with TypeScript. Enjoy complete type safety and autocompletion.'
+    description:
+      'Built from the ground up with TypeScript. Enjoy complete type safety and autocompletion.'
   },
   {
     icon: <Zap className='size-10' />,
@@ -31,7 +33,8 @@ const features = [
   {
     icon: <Leaf className='size-10' />,
     title: 'Tree-shakable',
-    description: 'Import only what you need. Keep your bundle size small with our modular architecture.'
+    description:
+      'Import only what you need. Keep your bundle size small with our modular architecture.'
   },
   {
     icon: <Sparkles className='size-10' />,
@@ -41,7 +44,8 @@ const features = [
   {
     icon: <RefreshCw className='size-10' />,
     title: 'React Hooks',
-    description: 'Powerful custom hooks for common patterns. Build complex features with minimal code.'
+    description:
+      'Powerful custom hooks for common patterns. Build complex features with minimal code.'
   },
   {
     icon: <Github className='size-10' />,
@@ -77,7 +81,10 @@ const features = [
 
 export function FeaturesSection() {
   return (
-    <section className='py-16 md:py-24 lg:py-32' id='features'>
+    <section
+      className='py-16 md:py-24 lg:py-32'
+      id='features'
+    >
       <div className='container mx-auto'>
         <div className='mb-10 flex flex-col items-center justify-center space-y-3 text-center md:mb-16 md:space-y-4'>
           <div className='inline-block rounded-full bg-primary/10 px-3 py-1 text-sm font-medium text-primary'>
@@ -87,8 +94,8 @@ export function FeaturesSection() {
             Everything you need to build <span className='text-primary'>amazing</span> applications
           </h2>
           <p className='mx-auto max-w-[700px] text-sm text-muted-foreground sm:text-base md:text-lg'>
-            Our library provides all the tools you need to build modern, performant applications that your users will
-            love.
+            Our library provides all the tools you need to build modern, performant applications
+            that your users will love.
           </p>
         </div>
 
@@ -116,7 +123,7 @@ export function FeaturesSection() {
                 <h3 className='text-lg font-bold md:text-xl'>{feature.title}</h3>
                 <p className='text-sm text-muted-foreground md:text-base'>{feature.description}</p>
               </div>
-              <div className='absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-chart-4 transition-all duration-300 group-hover:w-full'></div>
+              <div className='absolute bottom-0 left-0 h-1 w-0 bg-gradient-to-r from-primary to-chart-4 transition-all duration-300 group-hover:w-full' />
             </div>
           ))}
         </div>

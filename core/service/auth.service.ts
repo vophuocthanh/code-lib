@@ -1,5 +1,5 @@
 import { httpClient } from '@/core/service/http-client'
-import { Account, LoginResponse, RegisterReponse } from '@/model/interface/auth.interface'
+import type { Account, LoginResponse, RegisterReponse } from '@/model/interface/auth.interface'
 
 const API_LOGIN_URL = '/auth/login'
 const API_REGISTER_URL = '/auth/register'

@@ -2,6 +2,7 @@
 
 import { motion } from 'framer-motion'
 import React from 'react'
+
 import { cn } from '@/core/lib/utils'
 
 // Container motion variants
@@ -40,7 +41,10 @@ export const fadeInVariants = (delay: number = 0) => ({
 })
 
 // Slide in animation
-export const slideInVariants = (delay: number = 0, direction: 'up' | 'down' | 'left' | 'right' = 'up') => {
+export const slideInVariants = (
+  delay: number = 0,
+  direction: 'up' | 'down' | 'left' | 'right' = 'up'
+) => {
   const directions = {
     up: { y: 20, x: 0 },
     down: { y: -20, x: 0 },
@@ -80,10 +84,10 @@ export const MotionContainer = ({
   if (animation === 'fade') {
     return (
       <motion.div
-        initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
-        transition={{ duration: 0.5, delay }}
         className={className}
+        initial={{ opacity: 0 }}
+        transition={{ duration: 0.5, delay }}
       >
         {children}
       </motion.div>
@@ -100,10 +104,10 @@ export const MotionContainer = ({
 
     return (
       <motion.div
-        initial={{ opacity: 0, ...directions[direction] }}
         animate={{ opacity: 1, y: 0, x: 0 }}
-        transition={{ duration: 0.5, delay }}
         className={className}
+        initial={{ opacity: 0, ...directions[direction] }}
+        transition={{ duration: 0.5, delay }}
       >
         {children}
       </motion.div>
@@ -112,7 +116,12 @@ export const MotionContainer = ({
 
   // Default stagger animation
   return (
-    <motion.div initial='hidden' animate='visible' variants={containerVariants} className={className}>
+    <motion.div
+      animate='visible'
+      className={className}
+      initial='hidden'
+      variants={containerVariants}
+    >
       {children}
     </motion.div>
   )
@@ -126,11 +135,20 @@ type MotionItemProps = {
   as?: keyof typeof motion
 }
 
-export const MotionItem = ({ children, className, delay = 0, duration = 0.5, as = 'div' }: MotionItemProps) => {
+export const MotionItem = ({
+  children,
+  className,
+  delay = 0,
+  duration = 0.5,
+  as = 'div'
+}: MotionItemProps) => {
   const Component = motion[as] as any
 
   return (
-    <Component variants={itemVariants} className={className}>
+    <Component
+      className={className}
+      variants={itemVariants}
+    >
       {children}
     </Component>
   )

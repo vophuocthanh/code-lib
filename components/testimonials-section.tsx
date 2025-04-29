@@ -1,8 +1,9 @@
 'use client'
 
-import * as React from 'react'
-import { cn } from '@/core/lib/utils'
 import { Star, User } from 'lucide-react'
+import * as React from 'react'
+
+import { cn } from '@/core/lib/utils'
 
 const testimonials = [
   {
@@ -51,7 +52,8 @@ export function TestimonialsSection() {
             Loved by developers <span className='text-primary'>worldwide</span>
           </h2>
           <p className='mx-auto max-w-[700px] text-sm text-muted-foreground sm:text-base md:text-lg'>
-            Don&apos;t just take our word for it. See what others have to say about their experience with CodeLib.
+            Don&apos;t just take our word for it. See what others have to say about their experience
+            with CodeLib.
           </p>
         </div>
 
@@ -70,7 +72,10 @@ export function TestimonialsSection() {
                 {Array(testimonial.stars)
                   .fill(null)
                   .map((_, i) => (
-                    <Star key={i} className='size-3.5 fill-chart-1 text-chart-1 md:size-4' />
+                    <Star
+                      key={i}
+                      className='size-3.5 fill-chart-1 text-chart-1 md:size-4'
+                    />
                   ))}
               </div>
 
@@ -90,7 +95,7 @@ export function TestimonialsSection() {
                 </div>
               </div>
 
-              <div className='absolute -bottom-1 -right-1 size-12 rotate-12 rounded-full bg-primary/10 transition-all duration-300 group-hover:scale-150 md:size-16'></div>
+              <div className='absolute -bottom-1 -right-1 size-12 rotate-12 rounded-full bg-primary/10 transition-all duration-300 group-hover:scale-150 md:size-16' />
             </div>
           ))}
         </div>

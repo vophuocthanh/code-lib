@@ -1,14 +1,17 @@
 import { PageLayout } from '@/components/common/page-layout'
 import { SectionContainer } from '@/components/common/section-container'
-import { FeatureList } from '@/components/features/feature-list'
-import { FeatureCTA } from '@/components/features/feature-cta'
 import SectionHeading from '@/components/common/section-heading'
+import { FeatureCTA } from '@/components/features/feature-cta'
+import { FeatureList } from '@/components/features/feature-list'
 export default function FeaturesPage() {
   return (
     <PageLayout>
       <SectionContainer>
         <SectionHeading
+          animation
+          center
           badge={{ text: 'Premium Features' }}
+          description='Our library includes all the tools and components you need to create beautiful, performant applications with minimal effort.'
           title={
             <>
               Everything you need to{' '}
@@ -17,9 +20,6 @@ export default function FeaturesPage() {
               </span>
             </>
           }
-          description='Our library includes all the tools and components you need to create beautiful, performant applications with minimal effort.'
-          center
-          animation
         />
 
         <div className='mt-16'>

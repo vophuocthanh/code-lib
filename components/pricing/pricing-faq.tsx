@@ -5,10 +5,10 @@ import { motion } from 'framer-motion'
 export const PricingFAQ = () => {
   return (
     <motion.div
-      initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
-      transition={{ delay: 1, duration: 0.5 }}
       className='mx-auto mt-24 max-w-3xl text-center'
+      initial={{ opacity: 0 }}
+      transition={{ delay: 1, duration: 0.5 }}
     >
       <h2 className='mb-4 text-2xl font-bold'>Frequently Asked Questions</h2>
       <div className='mt-8 grid gap-6 sm:grid-cols-2'>

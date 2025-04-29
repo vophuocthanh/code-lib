@@ -1,9 +1,10 @@
 'use client'
 
+import classNames from 'classnames'
+import { useState } from 'react'
+
 import { Button } from '@/components/ui/button'
 import { Input } from '@/components/ui/input'
-import { useState } from 'react'
-import classNames from 'classnames'
 
 export default function LoginForm() {
   const [email, setEmail] = useState<string>('')
@@ -38,24 +39,24 @@ export default function LoginForm() {
 
         <div className='space-y-4'>
           <Input
+            className='w-full border-gray-300 transition-all focus:border-indigo-500 focus:ring-indigo-500'
+            placeholder='Email'
             type='email'
             value={email}
             onChange={(e) => setEmail(e.target.value)}
-            placeholder='Email'
-            className='w-full border-gray-300 transition-all focus:border-indigo-500 focus:ring-indigo-500'
           />
           <Input
+            className='w-full border-gray-300 transition-all focus:border-indigo-500 focus:ring-indigo-500'
+            placeholder='Mật khẩu'
             type='password'
             value={password}
             onChange={(e) => setPassword(e.target.value)}
-            placeholder='Mật khẩu'
-            className='w-full border-gray-300 transition-all focus:border-indigo-500 focus:ring-indigo-500'
           />
         </div>
 
         <Button
-          onClick={handleLogin}
           className='w-full bg-indigo-600 py-2 text-lg font-semibold text-white transition-colors duration-200 hover:bg-indigo-700'
+          onClick={handleLogin}
         >
           Đăng nhập
         </Button>

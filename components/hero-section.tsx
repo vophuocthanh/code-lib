@@ -1,10 +1,11 @@
 'use client'
 
-import * as React from 'react'
-import { Button } from '@/components/ui/button'
-import { cn } from '@/core/lib/utils'
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
+import * as React from 'react'
+
+import { Button } from '@/components/ui/button'
+import { cn } from '@/core/lib/utils'
 
 const features = ['TypeScript Support', 'Modern API Design', 'Fully Documented', 'Tree-shakable']
 
@@ -36,19 +37,22 @@ export function HeroSection() {
               for modern apps
             </h1>
             <p className='mx-auto max-w-[700px] text-sm text-muted-foreground sm:text-base md:text-lg'>
-              Build elegant, performant applications with our intuitive, type-safe library designed for developers who
-              care about code quality.
+              Build elegant, performant applications with our intuitive, type-safe library designed
+              for developers who care about code quality.
             </p>
           </div>
 
           <div className='flex flex-wrap items-center justify-center gap-3 delay-500 duration-1000 animate-in slide-in-from-bottom-7 md:gap-4'>
-            <Button size='lg' className='h-10 gap-2 rounded-full px-4 text-sm md:h-11 md:px-5 md:text-base'>
+            <Button
+              className='h-10 gap-2 rounded-full px-4 text-sm md:h-11 md:px-5 md:text-base'
+              size='lg'
+            >
               <span>Get Started</span>
               <ArrowRight className='size-4' />
             </Button>
             <Link
-              href='#docs'
               className='inline-flex h-10 items-center justify-center rounded-full border border-input bg-background px-4 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:h-11 md:px-5 md:text-base'
+              href='#docs'
             >
               Read the docs
             </Link>
@@ -80,13 +84,18 @@ export function HeroSection() {
             </div>
             <pre className='overflow-x-auto p-3 font-mono text-xs sm:p-4 sm:text-sm'>
               <code className='text-foreground'>
-                <span className='text-chart-2'>import</span> <span className='text-chart-5'>{'{'}</span>{' '}
-                <span className='text-chart-3'>CodeLib</span> <span className='text-chart-5'>{'}'}</span>{' '}
-                <span className='text-chart-2'>from</span> <span className='text-chart-1'>&quot;codelib&quot;</span>
+                <span className='text-chart-2'>import</span>{' '}
+                <span className='text-chart-5'>{'{'}</span>{' '}
+                <span className='text-chart-3'>CodeLib</span>{' '}
+                <span className='text-chart-5'>{'}'}</span>{' '}
+                <span className='text-chart-2'>from</span>{' '}
+                <span className='text-chart-1'>&quot;codelib&quot;</span>
                 <br />
                 <br />
-                <span className='text-chart-2'>function</span> <span className='text-chart-4'>Example</span>
-                <span className='text-foreground'>()</span> <span className='text-chart-5'>{'{'}</span>
+                <span className='text-chart-2'>function</span>{' '}
+                <span className='text-chart-4'>Example</span>
+                <span className='text-foreground'>()</span>{' '}
+                <span className='text-chart-5'>{'{'}</span>
                 <br />
                 {'  '}
                 <span className='text-chart-2'>return</span> <span className='text-chart-5'>(</span>
@@ -107,7 +116,8 @@ export function HeroSection() {
                 <br />
                 {'      '}
                 <span className='text-chart-5'>{'<'}</span>
-                <span className='text-chart-3'>CodeLib.Button</span> <span className='text-chart-4'>variant</span>
+                <span className='text-chart-3'>CodeLib.Button</span>{' '}
+                <span className='text-chart-4'>variant</span>
                 <span className='text-foreground'>=</span>
                 <span className='text-chart-1'>&quot;primary&quot;</span>
                 <span className='text-chart-5'>{'>'}</span>

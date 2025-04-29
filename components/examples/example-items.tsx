@@ -1,8 +1,9 @@
 'use client'
 
-import { Button } from '@/components/ui/button'
-import { Copy, FileIcon, Share2, ThumbsUp } from 'lucide-react'
 import { motion } from 'framer-motion'
+import { Copy, FileIcon, Share2, ThumbsUp } from 'lucide-react'
+
+import { Button } from '@/components/ui/button'
 import { useExamplesStore } from '@/core/stores/examples-store'
 
 // Motion animation variants
@@ -75,7 +76,9 @@ function ButtonExample() {
 }`,
     preview: (
       <div className='group rounded-lg border p-4 transition-all hover:shadow-md'>
-        <h3 className='text-lg font-medium transition-colors group-hover:text-primary'>Hover Card</h3>
+        <h3 className='text-lg font-medium transition-colors group-hover:text-primary'>
+          Hover Card
+        </h3>
         <p className='text-sm text-muted-foreground'>This card has a nice hover effect</p>
       </div>
     )
@@ -103,16 +106,28 @@ function ButtonExample() {
       <nav className='flex w-full items-center justify-between rounded-lg border-b p-4'>
         <div className='font-bold'>Brand</div>
         <div className='hidden space-x-4 md:flex'>
-          <a href='#' className='hover:text-primary'>
+          <a
+            className='hover:text-primary'
+            href='#'
+          >
             Home
           </a>
-          <a href='#' className='hover:text-primary'>
+          <a
+            className='hover:text-primary'
+            href='#'
+          >
             About
           </a>
-          <a href='#' className='hover:text-primary'>
+          <a
+            className='hover:text-primary'
+            href='#'
+          >
             Features
           </a>
-          <a href='#' className='hover:text-primary'>
+          <a
+            className='hover:text-primary'
+            href='#'
+          >
             Contact
           </a>
         </div>
@@ -157,13 +172,24 @@ function ButtonExample() {
       <form className='w-full max-w-sm space-y-4 rounded-lg border p-6'>
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Email</label>
-          <input type='email' className='w-full rounded-md border px-3 py-2' placeholder='email@example.com' />
+          <input
+            className='w-full rounded-md border px-3 py-2'
+            placeholder='email@example.com'
+            type='email'
+          />
         </div>
         <div className='space-y-2'>
           <label className='text-sm font-medium'>Password</label>
-          <input type='password' className='w-full rounded-md border px-3 py-2' placeholder='••••••••' />
+          <input
+            className='w-full rounded-md border px-3 py-2'
+            placeholder='••••••••'
+            type='password'
+          />
         </div>
-        <button type='submit' className='rounded-md bg-primary px-4 py-2 text-primary-foreground'>
+        <button
+          className='rounded-md bg-primary px-4 py-2 text-primary-foreground'
+          type='submit'
+        >
           Sign In
         </button>
       </form>
@@ -175,20 +201,22 @@ export const ExampleItems = () => {
   const { activeCategory, activeTab, setActiveTab } = useExamplesStore()
 
   const filteredExamples =
-    activeCategory === 'All' ? exampleItems : exampleItems.filter((ex) => ex.category === activeCategory)
+    activeCategory === 'All'
+      ? exampleItems
+      : exampleItems.filter((ex) => ex.category === activeCategory)
 
   return (
     <motion.div
-      variants={containerVariants}
-      initial='hidden'
       animate='visible'
       className='grid gap-8 sm:grid-cols-2 lg:grid-cols-2'
+      initial='hidden'
+      variants={containerVariants}
     >
       {filteredExamples.map((example, index) => (
         <motion.div
           key={index}
-          variants={itemVariants}
           className='overflow-hidden rounded-xl border border-border bg-card shadow-sm transition-all hover:shadow-md'
+          variants={itemVariants}
         >
           <div className='flex h-full flex-col'>
             <div className='border-b p-6'>
@@ -203,13 +231,17 @@ export const ExampleItems = () => {
             <div className='border-t'>
               <div className='flex flex-col justify-between gap-4 p-4 sm:flex-row sm:items-center'>
                 <div className='flex items-center gap-2'>
-                  <Button variant='ghost' size='sm' className='gap-1.5'>
+                  <Button
+                    className='gap-1.5'
+                    size='sm'
+                    variant='ghost'
+                  >
                     <Copy className='size-4' />
                     <span>Copy</span>
                   </Button>
                   <Button
-                    variant='ghost'
                     size='sm'
+                    variant='ghost'
                     onClick={() => {
                       setActiveTab(activeTab === example.title ? null : example.title)
                     }}
@@ -219,11 +251,17 @@ export const ExampleItems = () => {
                   </Button>
                 </div>
                 <div className='flex items-center gap-2'>
-                  <Button variant='ghost' size='icon'>
+                  <Button
+                    size='icon'
+                    variant='ghost'
+                  >
                     <ThumbsUp className='size-4' />
                   </Button>
                   <span className='text-sm text-muted-foreground'>{example.likes}</span>
-                  <Button variant='ghost' size='icon'>
+                  <Button
+                    size='icon'
+                    variant='ghost'
+                  >
                     <Share2 className='size-4' />
                   </Button>
                 </div>
@@ -231,10 +269,10 @@ export const ExampleItems = () => {
 
               {activeTab === example.title && (
                 <motion.div
-                  initial={{ opacity: 0, height: 0 }}
                   animate={{ opacity: 1, height: 'auto' }}
-                  exit={{ opacity: 0, height: 0 }}
                   className='border-t'
+                  exit={{ opacity: 0, height: 0 }}
+                  initial={{ opacity: 0, height: 0 }}
                 >
                   <pre className='overflow-x-auto p-4 font-mono text-sm'>
                     <code>{example.code}</code>

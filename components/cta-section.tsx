@@ -1,7 +1,8 @@
-import * as React from 'react'
-import { Button } from '@/components/ui/button'
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import * as React from 'react'
+
+import { Button } from '@/components/ui/button'
 
 export function CTASection() {
   return (
@@ -27,17 +28,21 @@ export function CTASection() {
           </h2>
 
           <p className='mx-auto w-full text-center text-sm text-muted-foreground sm:text-base md:text-lg'>
-            Get started with our comprehensive documentation and examples. Build your next project faster and better.
+            Get started with our comprehensive documentation and examples. Build your next project
+            faster and better.
           </p>
 
           <div className='flex flex-wrap items-center justify-center gap-3 md:gap-4'>
-            <Button size='lg' className='h-10 gap-2 rounded-full px-4 text-sm md:h-11 md:px-5 md:text-base'>
+            <Button
+              className='h-10 gap-2 rounded-full px-4 text-sm md:h-11 md:px-5 md:text-base'
+              size='lg'
+            >
               <span>Get Started for Free</span>
               <ArrowRight className='size-4' />
             </Button>
             <Link
-              href='https://github.com/yourusername/codelib'
               className='inline-flex h-10 items-center justify-center rounded-full border border-input bg-background px-4 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:h-11 md:px-5 md:text-base'
+              href='https://github.com/yourusername/codelib'
             >
               View on GitHub
             </Link>
