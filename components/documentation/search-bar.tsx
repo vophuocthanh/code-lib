@@ -16,7 +16,7 @@ export const DocSearchBar = () => {
       <div className='relative'>
         <Search className='absolute left-3 top-1/2 size-4 -translate-y-1/2 text-muted-foreground' />
         <Input
-          className='w-full rounded-full bg-background pl-10'
+          className='mt-5 w-full rounded-full bg-background pl-10'
           placeholder='Search documentation...'
           type='text'
         />

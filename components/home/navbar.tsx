@@ -2,10 +2,12 @@
 
 import { Github, Menu, X } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter, usePathname } from 'next/navigation'
 import * as React from 'react'
 
-import { ThemeToggle } from '@/components/theme-toggle'
+import { ThemeToggle } from '@/components/toggle-mode/theme-toggle'
 import { Button } from '@/components/ui/button'
+import { cn } from '@/core/lib/utils'
 
 const navItems = [
   { name: 'Features', href: '/features' },
@@ -15,7 +17,13 @@ const navItems = [
 ]
 
 export function Navbar() {
+  const router = useRouter()
   const [isMenuOpen, setIsMenuOpen] = React.useState(false)
+  const pathname = usePathname()
+
+  const handleRedirectDocument = () => {
+    router.push('/documentation')
+  }
 
   const handleToggleMenu = () => {
     setIsMenuOpen(!isMenuOpen)
@@ -49,7 +57,10 @@ export function Navbar() {
               {navItems.map((item) => (
                 <Link
                   key={item.href}
-                  className='text-sm font-medium text-muted-foreground transition-colors hover:text-foreground'
+                  className={cn(
+                    'text-sm font-medium text-muted-foreground transition-colors hover:text-foreground',
+                    pathname !== '/' && pathname.startsWith(item.href) && 'text-foreground'
+                  )}
                   href={item.href}
                 >
                   {item.name}
@@ -63,7 +74,7 @@ export function Navbar() {
               <a
                 aria-label='GitHub repository'
                 className='inline-flex size-9 items-center justify-center rounded-full bg-transparent text-foreground transition-colors hover:bg-accent focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring'
-                href='https://github.com/yourusername/codelib'
+                href='https://github.com/vophuocthanh/code-lib'
                 rel='noopener noreferrer'
                 target='_blank'
               >
@@ -73,6 +84,7 @@ export function Navbar() {
               <Button
                 className='ml-2 px-3 sm:ml-4 sm:px-4'
                 size='sm'
+                onClick={handleRedirectDocument}
               >
                 Get Started
               </Button>
@@ -111,7 +123,7 @@ export function Navbar() {
             <div className='mt-2 flex items-center justify-between border-t border-border/60 pt-4'>
               <a
                 className='flex items-center gap-1.5 rounded-md p-2 text-sm font-medium text-muted-foreground transition-colors hover:bg-muted hover:text-foreground'
-                href='https://github.com/yourusername/codelib'
+                href='https://github.com/vophuocthanh/code-lib'
                 rel='noopener noreferrer'
                 target='_blank'
               >
@@ -121,7 +133,10 @@ export function Navbar() {
               <Button
                 className='px-3'
                 size='sm'
-                onClick={() => setIsMenuOpen(false)}
+                onClick={() => {
+                  setIsMenuOpen(false)
+                  handleRedirectDocument()
+                }}
               >
                 Get Started
               </Button>

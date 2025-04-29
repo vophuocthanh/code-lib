@@ -1,4 +1,3 @@
-import { PageLayout } from '@/components/common/page-layout'
 import { SectionContainer } from '@/components/common/section-container'
 import SectionHeading from '@/components/common/section-heading'
 import { DocContent } from '@/components/documentation/doc-content'
@@ -6,7 +5,7 @@ import { DocSearchBar } from '@/components/documentation/search-bar'
 import { DocSidebar } from '@/components/documentation/sidebar'
 export default function DocumentationPage() {
   return (
-    <PageLayout>
+    <>
       <SectionContainer background='gradient'>
         <SectionHeading
           animation
@@ -24,6 +23,6 @@ export default function DocumentationPage() {
           <DocContent />
         </div>
       </SectionContainer>
-    </PageLayout>
+    </>
   )
 }

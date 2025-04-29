@@ -1,11 +1,10 @@
-import { PageLayout } from '@/components/common/page-layout'
 import { SectionContainer } from '@/components/common/section-container'
 import SectionHeading from '@/components/common/section-heading'
 import { FeatureCTA } from '@/components/features/feature-cta'
 import { FeatureList } from '@/components/features/feature-list'
 export default function FeaturesPage() {
   return (
-    <PageLayout>
+    <>
       <SectionContainer>
         <SectionHeading
           animation
@@ -28,6 +27,6 @@ export default function FeaturesPage() {
 
         <FeatureCTA />
       </SectionContainer>
-    </PageLayout>
+    </>
   )
 }

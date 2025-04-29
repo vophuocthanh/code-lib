@@ -4,7 +4,7 @@ import './globals.css'
 import type { ReactNode } from 'react'
 import { ToastContainer } from 'react-toastify'
 
-import { ThemeProvider } from '@/components/theme-provider'
+import { ThemeProvider } from '@/components/toggle-mode/theme-provider'
 import ProviderQuery from '@/core/utils/provider-query'
 import 'react-toastify/dist/ReactToastify.css'
 

@@ -1,4 +1,3 @@
-import { PageLayout } from '@/components/common/page-layout'
 import { SectionContainer } from '@/components/common/section-container'
 import SectionHeading from '@/components/common/section-heading'
 import { ContributeSection } from '@/components/examples/contribute-section'
@@ -7,7 +6,7 @@ import { ExampleItems } from '@/components/examples/example-items'
 
 export default function ExamplesPage() {
   return (
-    <PageLayout>
+    <>
       <SectionContainer background='gradient'>
         <SectionHeading
           animation
@@ -24,6 +23,6 @@ export default function ExamplesPage() {
 
         <ContributeSection />
       </SectionContainer>
-    </PageLayout>
+    </>
   )
 }

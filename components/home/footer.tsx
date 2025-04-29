@@ -4,32 +4,7 @@ import { Github, Twitter, Linkedin, Mail } from 'lucide-react'
 import Link from 'next/link'
 import * as React from 'react'
 
-const productLinks = [
-  { name: 'Features', href: '#features' },
-  { name: 'Examples', href: '#examples' },
-  { name: 'Documentation', href: '#docs' },
-  { name: 'Pricing', href: '#pricing' }
-]
-
-const companyLinks = [
-  { name: 'About', href: '#about' },
-  { name: 'Blog', href: '#blog' },
-  { name: 'Careers', href: '#careers' },
-  { name: 'Contact', href: '#contact' }
-]
-
-const resourceLinks = [
-  { name: 'Community', href: '#community' },
-  { name: 'GitHub', href: 'https://github.com/yourusername/codelib' },
-  { name: 'Discord', href: '#discord' },
-  { name: 'Twitter', href: '#twitter' }
-]
-
-const legalLinks = [
-  { name: 'Privacy Policy', href: '#privacy' },
-  { name: 'Terms of Service', href: '#terms' },
-  { name: 'Cookie Policy', href: '#cookies' }
-]
+import { productLinks, companyLinks, resourceLinks, legalLinks } from '@/_mock/data-footer.mock'
 
 export function Footer() {
   return (
@@ -55,28 +30,29 @@ export function Footer() {
             <div className='mt-4 flex space-x-4'>
               <Link
                 aria-label='GitHub'
-                className='text-muted-foreground transition-colors hover:text-foreground'
-                href='https://github.com/yourusername/codelib'
+                className='link-hover'
+                href='https://github.com/vophuocthanh/code-lib'
+                target='_blank'
               >
                 <Github className='size-4 sm:size-5' />
               </Link>
               <Link
                 aria-label='Twitter'
-                className='text-muted-foreground transition-colors hover:text-foreground'
+                className='link-hover'
                 href='#twitter'
               >
                 <Twitter className='size-4 sm:size-5' />
               </Link>
               <Link
                 aria-label='LinkedIn'
-                className='text-muted-foreground transition-colors hover:text-foreground'
+                className='link-hover'
                 href='#linkedin'
               >
                 <Linkedin className='size-4 sm:size-5' />
               </Link>
               <Link
                 aria-label='Email'
-                className='text-muted-foreground transition-colors hover:text-foreground'
+                className='link-hover'
                 href='mailto:info@codelib.example'
               >
                 <Mail className='size-4 sm:size-5' />
@@ -90,7 +66,7 @@ export function Footer() {
               {productLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    className='text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm'
+                    className='link-hover text-xs sm:text-sm'
                     href={link.href}
                   >
                     {link.name}
@@ -106,7 +82,7 @@ export function Footer() {
               {companyLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    className='text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm'
+                    className='link-hover text-xs sm:text-sm'
                     href={link.href}
                   >
                     {link.name}
@@ -122,7 +98,7 @@ export function Footer() {
               {resourceLinks.map((link) => (
                 <li key={link.name}>
                   <Link
-                    className='text-xs text-muted-foreground transition-colors hover:text-foreground sm:text-sm'
+                    className='link-hover text-xs sm:text-sm'
                     href={link.href}
                   >
                     {link.name}
@@ -141,7 +117,7 @@ export function Footer() {
             {legalLinks.map((link) => (
               <li key={link.name}>
                 <Link
-                  className='text-xs text-muted-foreground transition-colors hover:text-foreground'
+                  className='link-hover text-xs'
                   href={link.href}
                 >
                   {link.name}

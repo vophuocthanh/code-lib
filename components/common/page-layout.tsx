@@ -2,8 +2,8 @@
 
 import React from 'react'
 
-import { Footer } from '@/components/footer'
-import { Navbar } from '@/components/navbar'
+import { Footer } from '@/components/home/footer'
+import { Navbar } from '@/components/home/navbar'
 import { cn } from '@/core/lib/utils'
 
 type PageLayoutProps = {

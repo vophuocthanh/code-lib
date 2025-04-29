@@ -1,6 +1,5 @@
 import { Sparkles } from 'lucide-react'
 
-import { PageLayout } from '@/components/common/page-layout'
 import { SectionContainer } from '@/components/common/section-container'
 import SectionHeading from '@/components/common/section-heading'
 import { PlanSwitcher } from '@/components/pricing/plan-switcher'
@@ -10,7 +9,7 @@ import { PricingPlans } from '@/components/pricing/pricing-plans'
 
 export default function PricingPage() {
   return (
-    <PageLayout>
+    <>
       <SectionContainer>
         <SectionHeading
           animation
@@ -32,6 +31,6 @@ export default function PricingPage() {
 
         <PricingFAQ />
       </SectionContainer>
-    </PageLayout>
+    </>
   )
 }

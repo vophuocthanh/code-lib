@@ -42,7 +42,7 @@ export function CTASection() {
             </Button>
             <Link
               className='inline-flex h-10 items-center justify-center rounded-full border border-input bg-background px-4 text-sm font-medium shadow-sm transition-colors hover:bg-accent hover:text-accent-foreground focus-visible:outline-none focus-visible:ring-1 focus-visible:ring-ring md:h-11 md:px-5 md:text-base'
-              href='https://github.com/yourusername/codelib'
+              href='https://github.com/vophuocthanh/code-lib'
             >
               View on GitHub
             </Link>
