@@ -80,7 +80,7 @@ export const PricingPlans = () => {
       animation='stagger'
       className='grid gap-8 sm:grid-cols-1 md:grid-cols-2 lg:grid-cols-3'
     >
-      {plans.map((plan, index) => (
+      {plans.map((plan) => (
         <motion.div
           key={plan.name}
           className={cn(

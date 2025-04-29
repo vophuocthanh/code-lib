@@ -21,13 +21,9 @@ export const FeatureCard = ({
   icon,
   color = 'from-primary to-primary/60',
   className,
-  animation = true,
-  index = 0
+  animation = true
 }: FeatureCardProps) => {
   const Card = animation ? motion.div : 'div'
-
-  // Calculate delay for staggered animation
-  const delay = index * 0.1
 
   return (
     <Card

@@ -3,8 +3,6 @@
 import { motion } from 'framer-motion'
 import React from 'react'
 
-import { cn } from '@/core/lib/utils'
-
 // Container motion variants
 export const containerVariants = {
   hidden: { opacity: 0 },
@@ -77,8 +75,7 @@ export const MotionContainer = ({
   className,
   animation = 'stagger',
   delay = 0,
-  direction = 'up',
-  as = 'div'
+  direction = 'up'
 }: MotionContainerProps) => {
   // Dynamic variants based on animation type
   if (animation === 'fade') {
@@ -135,13 +132,7 @@ type MotionItemProps = {
   as?: keyof typeof motion
 }
 
-export const MotionItem = ({
-  children,
-  className,
-  delay = 0,
-  duration = 0.5,
-  as = 'div'
-}: MotionItemProps) => {
+export const MotionItem = ({ children, className, as = 'div' }: MotionItemProps) => {
   const Component = motion[as] as any
 
   return (
