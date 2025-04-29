@@ -52,6 +52,7 @@
         "skipComments": true
       }
     ],
-    "no-useless-catch": "off"
+    "no-useless-catch": "off",
+    "no-console": "error"
   }
 }
