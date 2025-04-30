@@ -2,10 +2,15 @@
 
 import { motion } from 'framer-motion'
 import { Github, PlayCircle } from 'lucide-react'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
 export const DocContent = () => {
+  const router = useRouter()
+  const handleRederectGithub = () => {
+    router.push('https://github.com/vophuocthanh/code-lib')
+  }
   return (
     <motion.div
       animate={{ opacity: 1 }}
@@ -59,6 +64,7 @@ function App() {
           <Button
             size='lg'
             variant='outline'
+            onClick={handleRederectGithub}
           >
             <Github className='mr-2 size-4' />
             View on GitHub
