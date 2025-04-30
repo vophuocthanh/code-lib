@@ -1,4 +1,5 @@
 import { Menu } from 'lucide-react'
+import { Suspense } from 'react'
 
 import { SectionContainer } from '@/components/common/section-container'
 import SectionHeading from '@/components/common/section-heading'
@@ -7,8 +8,12 @@ import { DocSearchBar } from '@/components/documentation/search-bar'
 import { DocSidebar } from '@/components/documentation/sidebar'
 import { Footer } from '@/components/home/footer'
 import { Navbar } from '@/components/home/navbar'
+import LoadingFallback from '@/components/loading/loading-fallback'
 import { Button } from '@/components/ui/button'
 import { Sheet, SheetContent, SheetTrigger } from '@/components/ui/sheet'
+
+export const dynamic = 'force-dynamic' // required for server side rendering
+// export const revalidate = 0  // disable cache client side, ảyunajyrun client side
 
 export default function DocumentationPage() {
   return (
@@ -51,7 +56,9 @@ export default function DocumentationPage() {
       </div>
 
       <div className='w-full'>
-        <DocContent />
+        <Suspense fallback={<LoadingFallback />}>
+          <DocContent />
+        </Suspense>
       </div>
       <Footer />
     </>

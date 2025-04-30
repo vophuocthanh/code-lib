@@ -1,28 +1,27 @@
-import type { NextRequest } from 'next/server'
 import { NextResponse } from 'next/server'
 
 import HttpStatusCode from '@/core/constant/status-http'
 
-export async function POST(request: NextRequest) {
+export async function POST(request: Request) {
   try {
-    const { email, password } = await request.json()
+    const body = await request.json()
 
-    if (email === 'user@example.com' && password === 'password123') {
-      return NextResponse.json(
-        { message: 'Đăng nhập thành công', user: { email } },
-        { status: HttpStatusCode.Ok }
-      )
-    } else {
-      return NextResponse.json(
-        { message: 'Email hoặc mật khẩu không đúng' },
-        { status: HttpStatusCode.Unauthorized }
-      )
-    }
-  } catch (error) {
+    // TODO: Implement actual authentication logic here
+    // For now, return a mock response
     return NextResponse.json(
-      { message: 'Có lỗi xảy ra', error: String(error) },
-      { status: HttpStatusCode.InternalServerError }
+      {
+        message: 'Login successful',
+        user: {
+          id: '1',
+          email: body.email,
+          name: 'Test User'
+        }
+      },
+      { status: HttpStatusCode.Ok }
     )
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+  } catch (error) {
+    return NextResponse.json({ message: 'Invalid request' }, { status: HttpStatusCode.BadRequest })
   }
 }
 

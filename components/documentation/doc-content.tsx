@@ -3,7 +3,7 @@
 import { motion } from 'framer-motion'
 import { Check, Copy, Github, ChevronLeft, ChevronRight } from 'lucide-react'
 import { useSearchParams, useRouter } from 'next/navigation'
-import { useEffect, useState } from 'react'
+import { useEffect, useState, Suspense } from 'react'
 import ReactMarkdown from 'react-markdown'
 import { Prism as SyntaxHighlighter } from 'react-syntax-highlighter'
 import {
@@ -16,9 +16,11 @@ import {
 } from 'react-syntax-highlighter/dist/cjs/styles/prism'
 
 import { documentationData } from '@/_mock/data-documentation.mock'
+import LoadingFallback from '@/components/loading/loading-fallback'
 import { Button } from '@/components/ui/button'
 import { useCopyToClipboard } from '@/core/hooks/use-copy-to-clipboard'
 import { cn } from '@/core/lib/utils'
+import type { NavigationState, CodeProps } from '@/model/interface/section.interface'
 
 const contentVariants = {
   hidden: { opacity: 0, y: 20 },
@@ -31,26 +33,6 @@ const contentVariants = {
     }
   }
 }
-
-interface CodeProps {
-  node?: any
-  inline?: boolean
-  className?: string
-  children?: React.ReactNode
-  [key: string]: any
-}
-
-interface Section {
-  id: string
-  title: string
-  content: string
-}
-
-interface NavigationState {
-  prev: Section | null
-  next: Section | null
-}
-
 const codeThemes = {
   vscDarkPlus,
   vs,
@@ -62,13 +44,14 @@ const codeThemes = {
 
 type ThemeType = keyof typeof codeThemes
 
-export const DocContent = () => {
+const DocContentInner = () => {
   const router = useRouter()
   const searchParams = useSearchParams()
   const [currentContent, setCurrentContent] = useState<string>('')
   const [currentTitle, setCurrentTitle] = useState<string>('')
   const [navigation, setNavigation] = useState<NavigationState>({ prev: null, next: null })
   const [currentTheme, setCurrentTheme] = useState<ThemeType>('dracula')
+  const [isLoading, setIsLoading] = useState(true)
 
   const { isCopied, copyToClipboard } = useCopyToClipboard()
 
@@ -86,7 +69,12 @@ export const DocContent = () => {
         next: currentIndex < allSections.length - 1 ? allSections[currentIndex + 1] : null
       })
     }
+    setIsLoading(false)
   }, [searchParams])
+
+  if (isLoading) {
+    return <LoadingFallback />
+  }
 
   const handleCopyCode = (code: string) => {
     copyToClipboard(code)
@@ -165,7 +153,7 @@ export const DocContent = () => {
               <Button
                 className='flex items-center gap-2'
                 variant='ghost'
-                onClick={() => handleNavigation(navigation.prev!.id)}
+                onClick={() => navigation.prev && handleNavigation(navigation.prev.id)}
               >
                 <ChevronLeft className='size-4' />
                 {navigation.prev.title}
@@ -178,7 +166,7 @@ export const DocContent = () => {
               <Button
                 className='flex items-center gap-2'
                 variant='ghost'
-                onClick={() => handleNavigation(navigation.next!.id)}
+                onClick={() => navigation.next && handleNavigation(navigation.next.id)}
               >
                 {navigation.next.title}
                 <ChevronRight className='size-4' />
@@ -204,5 +192,13 @@ export const DocContent = () => {
         </motion.div>
       </motion.div>
     </div>
+  )
+}
+
+export const DocContent = () => {
+  return (
+    <Suspense fallback={<LoadingFallback />}>
+      <DocContentInner />
+    </Suspense>
   )
 }
