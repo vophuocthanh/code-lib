@@ -1,4 +1,7 @@
+import { Suspense } from 'react'
+
 import { DocSidebar } from '@/components/documentation/sidebar'
+import LoadingFallback from '@/components/loading/loading-fallback'
 
 export default function DocumentationLayout({ children }: { children: React.ReactNode }) {
   return (
@@ -10,7 +13,9 @@ export default function DocumentationLayout({ children }: { children: React.Reac
           </div>
         </div>
 
-        <div className='flex-1 md:ml-64'>{children}</div>
+        <div className='flex-1 md:ml-64'>
+          <Suspense fallback={<LoadingFallback />}>{children}</Suspense>
+        </div>
       </div>
     </div>
   )
