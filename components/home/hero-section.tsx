@@ -1,5 +1,8 @@
+'use client'
+
 import { ArrowRight, CheckCircle2 } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
@@ -8,6 +11,10 @@ import { cn } from '@/core/lib/utils'
 const features = ['TypeScript Support', 'Modern API Design', 'Fully Documented', 'Tree-shakable']
 
 export function HeroSection() {
+  const router = useRouter()
+  const handleRedirectDocument = () => {
+    router.push('/documentation')
+  }
   return (
     <section className='relative overflow-hidden py-16 md:py-24 lg:py-32'>
       <div className='absolute inset-0 -z-10 size-full bg-background'>
@@ -44,6 +51,7 @@ export function HeroSection() {
             <Button
               className='h-10 gap-2 rounded-full px-4 text-sm md:h-11 md:px-5 md:text-base'
               size='lg'
+              onClick={handleRedirectDocument}
             >
               <span>Get Started</span>
               <ArrowRight className='size-4' />

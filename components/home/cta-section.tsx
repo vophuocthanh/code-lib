@@ -1,10 +1,17 @@
+'use client'
+
 import { ArrowRight } from 'lucide-react'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 import * as React from 'react'
 
 import { Button } from '@/components/ui/button'
 
 export function CTASection() {
+  const router = useRouter()
+  const handleRedirectDocument = () => {
+    router.push('/documentation')
+  }
   return (
     <section className='relative overflow-hidden py-16 md:py-24 lg:py-32'>
       <div className='absolute inset-0 -z-10 size-full bg-background'>
@@ -36,6 +43,7 @@ export function CTASection() {
             <Button
               className='h-10 gap-2 rounded-full px-4 text-sm md:h-11 md:px-5 md:text-base'
               size='lg'
+              onClick={handleRedirectDocument}
             >
               <span>Get Started for Free</span>
               <ArrowRight className='size-4' />

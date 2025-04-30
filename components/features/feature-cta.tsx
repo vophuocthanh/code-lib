@@ -2,10 +2,15 @@
 
 import { motion } from 'framer-motion'
 import Link from 'next/link'
+import { useRouter } from 'next/navigation'
 
 import { Button } from '@/components/ui/button'
 
 export const FeatureCTA = () => {
+  const router = useRouter()
+  const handleRedirectDocument = () => {
+    router.push('/documentation')
+  }
   return (
     <motion.div
       animate={{ opacity: 1, y: 0 }}
@@ -22,6 +27,7 @@ export const FeatureCTA = () => {
           <Button
             className='rounded-full'
             size='lg'
+            onClick={handleRedirectDocument}
           >
             Get Started For Free
           </Button>
