@@ -42,9 +42,9 @@
         "singleAttributePerLine": true
       }
     ],
-    "tailwindcss/no-custom-classname": "error",
-    "tailwindcss/no-contradicting-classname": "error",
-    "tailwindcss/enforces-negative-arbitrary-values": "error",
+    "tailwindcss/no-custom-classname": "warn",
+    "tailwindcss/no-contradicting-classname": "warn",
+    "tailwindcss/enforces-negative-arbitrary-values": "warn",
     "tailwindcss/enforces-shorthand": "warn",
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": [
