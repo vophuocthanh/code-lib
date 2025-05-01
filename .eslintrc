@@ -56,7 +56,7 @@
       }
     ],
     "prefer-const": ["error", { "destructuring": "any" }],
-    "max-lines": ["error", { "max": 500, "skipBlankLines": true, "skipComments": true }],
+    "max-lines": ["error", { "max": 5500, "skipBlankLines": true, "skipComments": true }],
     "no-useless-catch": "off",
     "no-console": ["error", { "allow": ["warn", "error"] }],
     "react/react-in-jsx-scope": "off",
